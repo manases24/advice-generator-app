@@ -1,3 +1,10 @@
+# Adivice generator app
+
+<div align="center">
+  <img src="./public/app.png" alt="App Screenshot" />
+</div>
+
+
 ## Instale Tailwind CSS y otras dependencias
 
 ### Ingrese este comando para instalar las dependencias tailwindcss, postcss y autoprefixer
