@@ -1,30 +1,52 @@
-# React + TypeScript + Vite
+## Instale Tailwind CSS y otras dependencias
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Ingrese este comando para instalar las dependencias tailwindcss, postcss y autoprefixer
 
-Currently, two official plugins are available:
+`$ yarn add -D tailwindcss postcss autoprefixer`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este comando instalará lo siguiente:
 
-## Expanding the ESLint configuration
+1. El marco Tailwind CSS
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+2. Post CSS, que proporciona complementos para realizar diferentes funcionalidades como prefijos en Vanilla CSS
 
-- Configure the top-level `parserOptions` property like this:
+3. Autoprefixer, que es un complemento de PostCSS para analizar CSS y agregar prefijos de proveedores a las reglas de CSS.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
+### Generar los archivos de configuración
+
+Este comando generará el archivo de configuración tailwindcss
+
+`$ npx tailwindcss init -p`
+
+### Configure las rutas de origen
+
+Agregue las rutas a todos sus archivos de plantilla en su tailwind.config.cjsarchivo. Los archivos de plantilla incluyen plantillas HTML, componentes de JavaScript y otros archivos de origen que contienen nombres de clases de Tailwind. Esto es para asegurarse de que se genere Vanilla CSS para los elementos correspondientes.
+
+Tu `tailwind.config.js` debe tener la siguiente configuracion:
+
+```javascript
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {},
   },
-}
+  plugins: [],
+};
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+El archivo de configuración actual denominado tailwind.config.cjs contiene el objeto module.export para personalizar Tailwind con propiedades como contenido, tema y complementos.
+
+### Agregar directivas Tailwind a su CSS
+
+Las directivas de Tailwind son declaraciones personalizadas específicas de Tailwind que indican a CSS cómo comportarse. Deberá agregar directivas para tres de las capas de Tailwind.
+
+@tailwind baseinyecta los estilos base de Tailwind y los estilos base registrados por complementos, @tailwind componentsinyecta las clases de componentes de Tailwind y las clases de componentes registradas por complementos, mientras que @tailwind utilitiesinyecta las clases de utilidad de Tailwind y las clases de utilidad registradas por complementos.
+
+Agregue las siguientes declaraciones a su archivo `./src/index.css`:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
