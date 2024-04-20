@@ -21,7 +21,7 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-dark-blue-500 min-h-screen flex items-center justify-center">
+    <div className="bg-dark-blue-500 min-h-screen flex items-center justify-center ">
       <div className="flex flex-col items-center justify-center">
         <Message id={advice.id} advice={advice.advice} />
         <Button getAdvice={getAdvice} />
@@ -31,4 +31,3 @@ function App() {
 }
 
 export default App;
-
